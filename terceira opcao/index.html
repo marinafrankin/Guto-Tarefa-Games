@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Babu e os Animais</title>
+    <!-- Fonte Infantil (Baloo 2) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Fundo Cenário -->
+    <div class="scenery">
+        <div class="sky"></div>
+        <div class="grass"></div>
+    </div>
+
+    <div class="game-container">
+        
+        <!-- Tela Inicial -->
+        <section id="screen-start" class="screen active">
+            <h1 class="title">Babu e os Animais</h1>
+            
+            <div class="characters-showcase">
+                <div class="character bounce-anim" id="babu">🐼</div>
+                <div class="character bobbing-anim delay-1">🦆</div>
+                <div class="character bobbing-anim delay-2">🐷</div>
+                <div class="character bobbing-anim delay-3">🐮</div>
+            </div>
+
+            <button id="btn-play" class="primary-btn">
+                JOGAR <span class="icon">➔</span>
+            </button>
+        </section>
+
+        <!-- Nível 1: Identificação e Som -->
+        <section id="screen-level-1" class="screen hidden">
+            <h2 class="level-title">Que som é esse?</h2>
+            
+            <div class="animals-row">
+                <div class="animal-card clickable" data-animal="pato">
+                    <div class="animal-img">🦆</div>
+                </div>
+                <div class="animal-card clickable" data-animal="porco">
+                    <div class="animal-img">🐷</div>
+                </div>
+                <div class="animal-card clickable" data-animal="vaca">
+                    <div class="animal-img">🐮</div>
+                </div>
+            </div>
+
+            <div class="feedback-container" id="feedback-level-1"></div>
+        </section>
+
+        <!-- Nível 2: O que eles comem? (Drag & Drop) -->
+        <section id="screen-level-2" class="screen hidden">
+            <h2 class="level-title">O que eles comem?</h2>
+            
+            <!-- Zona de Drop -->
+            <div class="animals-row drop-zones">
+                <div class="animal-card receiver" data-accept="pato">
+                    <div class="animal-img">🦆</div>
+                    <div class="mouth-zone"></div>
+                </div>
+                <div class="animal-card receiver" data-accept="porco">
+                    <div class="animal-img">🐷</div>
+                    <div class="mouth-zone"></div>
+                </div>
+                <div class="animal-card receiver" data-accept="vaca">
+                    <div class="animal-img">🐮</div>
+                    <div class="mouth-zone"></div>
+                </div>
+            </div>
+
+            <div class="separator-line"></div>
+
+            <!-- Itens Arrastáveis -->
+            <div class="foods-row" id="foods-container">
+                <div class="food-item draggable" draggable="true" data-food="vaca">
+                    <div class="food-img">🌾</div>
+                </div>
+                <div class="food-item draggable" draggable="true" data-food="porco">
+                    <div class="food-img">🍎</div>
+                </div>
+                <div class="food-item draggable" draggable="true" data-food="pato">
+                    <div class="food-img">🍞</div>
+                </div>
+            </div>
+            
+            <div class="feedback-container" id="feedback-level-2"></div>
+        </section>
+
+        <!-- Tela Final -->
+        <section id="screen-end" class="screen hidden">
+            <h1 class="title success-title">PARABÉNS!</h1>
+            
+            <div class="characters-showcase">
+                <div class="character jump-anim" id="babu-end">🐼</div>
+                <div class="character jump-anim delay-1">🦆</div>
+                <div class="character jump-anim delay-2">🐷</div>
+                <div class="character jump-anim delay-3">🐮</div>
+            </div>
+
+            <button id="btn-replay" class="primary-btn">
+                REPETIR <span class="icon">↺</span>
+            </button>
+        </section>
+
+    </div>
+
+    <!-- Container do Confete Dinâmico Gerado via JS -->
+    <div id="confetti-container"></div>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
