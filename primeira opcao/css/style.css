@@ -1,0 +1,308 @@
+/* style.css - Estilização do Jogo "Aventura do Reino Mágico" */
+
+/* Configurações Globais */
+:root {
+    --primary-color: #ff6b6b;
+    --secondary-color: #4ecdc4;
+    --accent-color: #ffe66d;
+    --background-color: #f7fff7;
+    --text-color: #2c3e50;
+    --btn-shadow: #e55039;
+    --btn-shadow-secondary: #00b894;
+    --card-bg: #fff;
+    --border-radius: 20px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none; /* Previne seleção de texto acidental por crianças */
+}
+
+body {
+    font-family: 'Baloo 2', cursive, sans-serif;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Evitar rolagem na tela inteira */
+}
+
+/* Container do Jogo (Simula uma tela de aplicativo ou tablet) */
+#game-container {
+    width: 100%;
+    max-width: 600px; /* Tamanho ótimo para tablets/celulares */
+    height: 100vh;
+    max-height: 800px;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px); /* Efeito "Glassmorphism" suave */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: var(--border-radius);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 650px) {
+    #game-container {
+        height: 90vh; /* Se a tela for de PC, desgruda das bordas verticais */
+        border: 4px solid #fff;
+    }
+}
+
+/* Telas (Screens) */
+.screen {
+    display: none; /* Escondidas por padrão */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.screen.active {
+    display: flex; /* Ativa e mostra */
+}
+
+/* Tipografia */
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #34495e;
+}
+
+/* Mascotes e Elementos Visuais */
+.mascot {
+    font-size: 5rem;
+    margin-bottom: 10px;
+    animation: floating 3s ease-in-out infinite;
+}
+
+.visual-area {
+    min-height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px; /* Para as Fases de Números e Memória */
+    flex-wrap: wrap;
+}
+
+.emoji-big {
+    font-size: 6rem;
+    filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+}
+
+/* Botões Infantis */
+.btn-primary, .btn-option {
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    transition: transform 0.1s, box-shadow 0.1s, background-color 0.2s;
+    outline: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.5rem;
+    padding: 15px 40px;
+    box-shadow: 0 6px 0 var(--btn-shadow);
+}
+
+.btn-primary:active {
+    transform: translateY(6px);
+    box-shadow: 0 0px 0 var(--btn-shadow);
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.btn-option {
+    background-color: white;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    padding: 20px 10px;
+    border: 3px solid #eee;
+    box-shadow: 0 6px 0 #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-option:active {
+    transform: translateY(6px);
+    box-shadow: 0 0px 0 #ddd;
+}
+
+.btn-option.correct {
+    background-color: var(--secondary-color);
+    color: white;
+    border-color: var(--secondary-color);
+    box-shadow: 0 6px 0 var(--btn-shadow-secondary);
+}
+
+.btn-option.wrong {
+    background-color: #ff4757;
+    color: white;
+    border-color: #ff4757;
+    box-shadow: 0 6px 0 #c0392b;
+    animation: shake 0.4s;
+}
+
+/* UI Gameplay (Cabeçalho) */
+.game-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.phase-info { color: var(--primary-color); }
+.score-info { color: var(--secondary-color); }
+.lives-info { display: flex; gap: 5px; }
+
+.heart {
+    font-size: 1.5rem;
+    transition: opacity 0.3s;
+}
+.heart.lost {
+    opacity: 0.2;
+    filter: grayscale(100%);
+}
+
+/* Color Box (Fase Cores) */
+.color-box {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Balão/Círculo */
+    border: 4px solid #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Jogo da Memória (Fase 4) */
+.memory-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 350px;
+}
+
+.memory-card {
+    background-color: var(--accent-color);
+    height: 80px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #d4c042;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.memory-card.flipped {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transform: rotateY(180deg); /* Efeito 3D */
+}
+
+.memory-card .emoji {
+    display: none;
+    transform: rotateY(180deg); /* Corrige direção se o card virar */
+}
+
+.memory-card.flipped .emoji,
+.memory-card.matched .emoji {
+    display: block;
+}
+
+.memory-card.matched {
+    background-color: #dff9fb;
+    cursor: default;
+    opacity: 0.8;
+}
+
+/* Temporizador */
+#timer-container {
+    width: 100%;
+    height: 15px;
+    background-color: #eee;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+#timer-bar {
+    height: 100%;
+    width: 100%;
+    background-color: var(--secondary-color);
+    transition: width 0.1s linear;
+}
+#timer-bar.warning { background-color: #f39c12; }
+#timer-bar.danger { background-color: #e74c3c; }
+
+/* Utilitários */
+.hidden { display: none !important; }
+
+/* Animações Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+.pulse { animation: pulse 2s infinite; }
+
+@keyframes floating {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}

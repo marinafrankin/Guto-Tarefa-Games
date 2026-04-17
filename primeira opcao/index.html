@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura do Reino Mágico</title>
+    <meta name="description" content="Jogo educativo para crianças de 5 a 7 anos.">
+    <!-- Fonte Google amigável e arredondada -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+    <!-- CONTAINER PRINCIPAL DO JOGO -->
+    <div id="game-container">
+
+        <!-- TELA INICIAL -->
+        <div id="screen-start" class="screen active">
+            <div class="mascot">🪄✨</div>
+            <h1>Aventura do <br> Reino Mágico</h1>
+            <p>Ajude nosso amiguinho a recuperar as letras, números e cores do reino encantado!</p>
+            <button id="btn-start" class="btn-primary pulse">Jogar Agora!</button>
+        </div>
+
+        <!-- TELA DO JOGO (GAMEPLAY) -->
+        <div id="screen-game" class="screen">
+            <!-- CABEÇALHO COM FASE, PONTOS E VIDAS -->
+            <header class="game-header">
+                <div class="phase-info">Fase <span id="current-phase">1</span></div>
+                <div class="score-info">Pontos: <span id="score">0</span></div>
+                <div class="lives-info" id="lives">
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                    <span class="heart">❤️</span>
+                </div>
+            </header>
+
+            <!-- TEMPORIZADOR (visível nas fases difíceis) -->
+            <div id="timer-container" class="hidden">
+                <div id="timer-bar"></div>
+            </div>
+
+            <!-- ÁREA DA PERGUNTA/DESAFIO -->
+            <main class="game-board">
+                <h2 id="question-text">Qual letra começa MAÇÃ?</h2>
+                <div id="question-visual" class="visual-area">
+                    <!-- Onde vai a imagem/emoji ou cartas de memória -->
+                    <span class="emoji-big">🍎</span>
+                </div>
+
+                <!-- BOTÕES DE OPÇÕES (respostas) -->
+                <div id="options-container" class="options-grid">
+                    <!-- Gerados via JavaScript -->
+                </div>
+            </main>
+        </div>
+
+        <!-- TELA DE GAME OVER -->
+        <div id="screen-gameover" class="screen">
+            <div class="mascot">😢</div>
+            <h1>Puxa vida!</h1>
+            <p>Os itens fugiram. Vamos tentar de novo?</p>
+            <div class="final-score">Sua Pontuação: <span id="final-score-go">0</span></div>
+            <button id="btn-restart-go" class="btn-primary">Tentar Novamente</button>
+        </div>
+
+        <!-- TELA DE VITÓRIA -->
+        <div id="screen-victory" class="screen">
+            <div class="mascot">🎉👑</div>
+            <h1>Parabéns!</h1>
+            <p>Você salvou o Reino Mágico recuperando tudo!</p>
+            <div class="final-score">Sua Pontuação Máxima: <span id="final-score-vic">0</span></div>
+            <button id="btn-restart-vic" class="btn-primary pulse">Jogar de Novo</button>
+        </div>
+
+    </div>
+
+    <!-- Áudio nativo (somente scripts geradores para não depender de MP3 externo, conforme pedido em webgame Vanilla leve) -->
+    <script src="./js/jogo.js"></script>
+</body>
+</html>

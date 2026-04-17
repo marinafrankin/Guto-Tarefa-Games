@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Mágico do Aprender</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Tela Inicial -->
+        <div id="start-screen" class="screen active">
+            <h1 class="bounce-text">Mundo Mágico do Aprender 🌟</h1>
+            <p class="subtitle">Aprenda brincando com nossos mascotes fofinhos!</p>
+            <div class="mascots-preview">
+                <span class="mascot floating">🦊</span>
+                <span class="mascot floating delay-1">🐰</span>
+                <span class="mascot floating delay-2">🐼</span>
+            </div>
+            <button id="btn-start" class="btn-primary ripple">Começar a Jogar! 🎮</button>
+        </div>
+
+        <!-- Tela de Jogo -->
+        <div id="gameplay-screen" class="screen">
+            <div id="hud">
+                <div class="hud-item hearts" id="lives">
+                    ❤️ ❤️ ❤️
+                </div>
+                <div class="hud-item score-display">
+                    ⭐ <span id="score">0</span>
+                </div>
+                <div class="hud-item phase-display">
+                    Fase <span id="phase">1</span>: <span id="phase-name">Letras</span>
+                </div>
+                <div class="hud-item timer-display hidden" id="timer-container">
+                    ⏳ <span id="timer">15</span>s
+                </div>
+            </div>
+
+            <!-- Container Dinâmico das Fases -->
+            <div id="phase-container">
+                <div id="question-area">
+                    <!-- O conteúdo da pergunta (ex: "A _ E L H A") vai aqui dinamicamente -->
+                </div>
+                <div id="options-area">
+                    <!-- Os botões de opções vão aqui dinamicamente -->
+                </div>
+                <!-- Para a fase da memória -->
+                <div id="memory-area" class="hidden">
+                    <!-- Cartas da memória geradas em grid -->
+                </div>
+            </div>
+
+            <div id="feedback-overlay" class="hidden">
+                <span id="feedback-icon">🎉</span>
+            </div>
+        </div>
+
+        <!-- Tela de Game Over -->
+        <div id="game-over-screen" class="screen">
+            <h1 class="shake-text">Puxa Vida! 🌧️</h1>
+            <p>Você perdeu suas vidas, mas pode tentar de novo!</p>
+            <p class="final-score">Sua pontuação: ⭐ <span id="final-score-lose">0</span></p>
+            <button id="btn-restart-lose" class="btn-primary ripple">Tentar Novamente ♻️</button>
+        </div>
+
+        <!-- Tela de Vitória -->
+        <div id="victory-screen" class="screen">
+            <h1 class="bounce-text">Você Venceu! 🏆</h1>
+            <p>Parabéns! Você recuperou a mágica do reino!</p>
+            <div class="mascots-preview">
+                <span class="mascot bounce">🎉</span>
+                <span class="mascot bounce delay-1">🌟</span>
+                <span class="mascot bounce delay-2">🎈</span>
+            </div>
+            <p class="final-score">Sua pontuação final: ⭐ <span id="final-score-win">0</span></p>
+            <button id="btn-restart-win" class="btn-secondary ripple">Jogar de Novo ♻️</button>
+        </div>
+    </div>
+
+    <!-- Efeitos sonoros serão gerados via AudioContext ou podemos usar pequenos sons base64/links se desejável, mas inicialmente o script cuidará do piano/beep -->
+
+    <script src="js/game.js"></script>
+</body>
+</html>
