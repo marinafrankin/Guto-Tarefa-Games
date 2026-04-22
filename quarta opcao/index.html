@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caça ao Tesouro do Pequeno Explorador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- ÁREA DE DICAS AUTOMÁTICAS -->
+        <div id="help-box" class="hidden">
+            <span id="help-text">Observe com calma.</span>
+        </div>
+
+        <!-- TELA INICIAL -->
+        <section id="screen-start" class="screen active">
+            <h1>Caça ao Tesouro do Pequeno Explorador</h1>
+            <p>Vamos encontrar o tesouro perdido?</p>
+            <div class="mascot">🐒</div>
+            <button class="btn btn-primary" onclick="startGame()">Jogar</button>
+        </section>
+
+        <!-- FASE 1: LETRAS MÁGICAS -->
+        <section id="screen-phase-1" class="screen">
+            <h2>Fase 1 - Letras Mágicas</h2>
+            <div class="challenge-box">
+                <p>Qual letra está faltando?</p>
+                <div class="word-display">
+                    <span>C</span> <span class="blank">_</span> <span>S</span> <span>A</span>
+                </div>
+            </div>
+            <div class="options-grid">
+                <button class="btn btn-option" onclick="checkAnswer(1, 'A')">A</button>
+                <button class="btn btn-option" onclick="checkAnswer(1, 'O')">O</button>
+                <button class="btn btn-option" onclick="checkAnswer(1, 'E')">E</button>
+            </div>
+        </section>
+
+        <!-- FASE 2: CONTE O TESOURO -->
+        <section id="screen-phase-2" class="screen">
+            <h2>Fase 2 - Conte o Tesouro</h2>
+            <div class="challenge-box">
+                <p>Quantas moedas existem?</p>
+                <div class="coins-display">
+                    <span class="coin">🪙</span>
+                    <span class="coin">🪙</span>
+                    <span class="coin">🪙</span>
+                </div>
+            </div>
+            <div class="options-grid">
+                <button class="btn btn-option" onclick="checkAnswer(2, '2')">2</button>
+                <button class="btn btn-option" onclick="checkAnswer(2, '3')">3</button>
+                <button class="btn btn-option" onclick="checkAnswer(2, '4')">4</button>
+            </div>
+        </section>
+
+        <!-- FASE 3: EMOÇÕES DO AMIGO -->
+        <section id="screen-phase-3" class="screen">
+            <h2>Fase 3 - Emoções do Amigo</h2>
+            <div class="challenge-box">
+                <p>Como o macaquinho está se sentindo?</p>
+                <div class="emotion-display">😢</div>
+            </div>
+            <div class="options-grid">
+                <button class="btn btn-option" onclick="checkAnswer(3, 'Feliz')">Feliz</button>
+                <button class="btn btn-option" onclick="checkAnswer(3, 'Triste')">Triste</button>
+                <button class="btn btn-option" onclick="checkAnswer(3, 'Bravo')">Bravo</button>
+            </div>
+        </section>
+
+        <!-- FASE 4: LABIRINTO SIMPLES -->
+        <section id="screen-phase-4" class="screen">
+            <h2>Fase 4 - Abra o Caminho</h2>
+            <div class="challenge-box">
+                <p>Guie o macaquinho para o baú clicando na seta certa!</p>
+                <div class="maze-display">
+                    <span id="maze-character">🐒</span> 
+                    <span class="path-dots">. . .</span> 
+                    <span id="maze-treasure">📦</span>
+                </div>
+            </div>
+            <div class="options-grid">
+                <button class="btn btn-option" onclick="checkAnswer(4, 'Left')">⬅️</button>
+                <button class="btn btn-option" onclick="checkAnswer(4, 'Right')">➡️</button>
+            </div>
+        </section>
+
+        <!-- TELA FINAL -->
+        <section id="screen-end" class="screen">
+            <h1>Parabéns!</h1>
+            <div class="mascot">🎉 👑 💎</div>
+            <p>Você encontrou o tesouro grande do explorador!</p>
+            <button class="btn btn-primary" onclick="resetGame()">Jogar Novamente</button>
+        </section>
+    </div>
+
+    <!-- AUDIO EFFECTS -->
+    <!-- Sound effects are visually simulated via CSS to avoid external dependencies, but logic allows easy addition -->
+
+    <script src="./js/game.js"></script>
+</body>
+</html>
