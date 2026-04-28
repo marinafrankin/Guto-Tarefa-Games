@@ -1,1 +1,1 @@
-# Protótipos de jogos para crianças - participantes: Marina, Paulo
+#Autores: Marina Frankin e Paulo Martins Machado
